@@ -56,13 +56,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [0] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [1] =   { ENCODER_CCW_CW(RGB_HUD, RGB_HUI) },
-    [2] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [1] =   { ENCODER_CCW_CW(DT_DOWN, DT_UP) },
+    [2] =   { ENCODER_CCW_CW(DT_DOWN, DT_UP) },
     [3] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
     [4] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) }
 };
 #endif
 
+#ifdef TAPPING_TERM_PER_KEY
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_T(KC_SPC):
+            return TAPPING_TERM + 1250;
+        case LT(1, KC_GRV):
+            return 130;
+        default:
+            return TAPPING_TERM;
+    }
+}
+#endif
+
+#ifdef COMBO_ENABLE
 enum combos {
      QW_ESC,
      AW_TAB,
@@ -71,7 +85,6 @@ enum combos {
      QPZ_BOOT
 };
 
-#ifdef COMBO_ENABLE
 const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM aw_combo[] = {KC_A, KC_W, COMBO_END};
 const uint16_t PROGMEM jk_combo[] = {J_SFT, K_CTL, COMBO_END};
