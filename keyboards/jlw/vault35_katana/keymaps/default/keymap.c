@@ -63,15 +63,25 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
-//const uint16_t PROGMEM QW_ESC[] = {KC_Q, KC_W, COMBO_END};
-//const uint16_t PROGMEM AW_TAB[] = {KC_A, KC_W, COMBO_END};
-//const uint16_t PROGMEM JK_BACKWORD[] = {J_SFT, K_CTL, COMBO_END};
-//const uint16_t PROGMEM FJ_CAPS[] = {F_SFT, J_SFT , COMBO_END};
-//const uint16_t PROGMEM QPZ_BOOT[] = {KC_Q, KC_P, KC_Z, KC_SLSH, COMBO_END};
-//combo_t key_combos[] = {
-//    COMBO(QW_ESC, KC_ESC),
-//    COMBO(AW_TAB, KC_TAB),
-//    COMBO(JK_BACKWORD, RCTL(KC_BSPC),
-//    COMBO(FJ_CAPS, KC_CAPS),
-//    COMBO(QPZ_BOOT, QK_BOOT),
-//};
+enum combos {
+     QW_ESC,
+     AW_TAB,
+     JK_BACKWORD,
+     FJ_CAPS,
+     QPZ_BOOT
+};
+
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM aw_combo[] = {KC_A, KC_W, COMBO_END};
+const uint16_t PROGMEM jk_combo[] = {J_SFT, K_CTL, COMBO_END};
+const uint16_t PROGMEM fj_combo[] = {F_SFT, J_SFT , COMBO_END};
+const uint16_t PROGMEM qpz_combo[] = {KC_Q, KC_P, KC_Z, KC_SLSH, COMBO_END};
+combo_t key_combos[] = {
+    [QW_ESC] = COMBO(qw_combo, KC_ESC),
+    [AW_TAB] = COMBO(aw_combo, KC_TAB),
+    [JK_BACKWORD] = COMBO(jk_combo, RCTL(KC_BSPC)),
+    [FJ_CAPS] = COMBO(fj_combo, KC_CAPS),
+    [QPZ_BOOT] = COMBO(qpz_combo, QK_BOOT),
+};
+#endif
