@@ -20,50 +20,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_6bars(
          KC_Q,      KC_W,   KC_E,       KC_R,       KC_T,                   KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
          KC_A,      S_ALT,  D_CTL,      F_SFT,      KC_G,                   KC_H,       J_SFT,      K_CTL,      L_ALT,      KC_ENTER,
-         KC_Z,      KC_X,   KC_C,       KC_V,       KC_B,       RGB_TOG,    KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,
-                            KC_LCTL,    KC_LGUI,    L_SPC,                  R_SPC,      MO(2),      MO(3)
+         KC_Z,      KC_X,   KC_C,       KC_V,       KC_B,       KC_MUTE,    KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,
+                            KC_LCTL,    KC_LGUI,    L_SPC,                  R_SPC,      MO(3),      MO(4)
     ),
 
     [1] = LAYOUT_split_6bars(
          KC_EXLM,   KC_AT,  KC_HASH,    KC_DLR,     KC_PERC,                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,
          KC_1,      KC_2,   KC_3,       KC_4,       KC_5,                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,
-         KC_TRNS,   KC_GRV, KC_LBRC,    KC_RBRC,    KC_BSLS,    DT_PRNT,    KC_MINS,    KC_EQL,     KC_SCLN,    KC_QUOT,    KC_QUES,
+         KC_TRNS,   KC_GRV, KC_LBRC,    KC_RBRC,    KC_BSLS,    RGB_TOG,    KC_MINS,    KC_EQL,     KC_SCLN,    KC_QUOT,    KC_QUES,
                             RGB_HUD,    RGB_HUI,    KC_TRNS,                KC_PSCR,    RGB_MOD,    RGB_RMOD
     ),
 
     [2] = LAYOUT_split_6bars(
          _______,  _______,  _______,   _______,    _______,                _______,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,
          _______,  KC_LALT,  KC_LCTL,   KC_LSFT,    _______,                _______,    KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_PGDN,
-         _______,  _______,  _______,   _______,    _______,   DT_PRNT,     _______,    _______,    _______,    _______,    _______,
+         _______,  _______,  _______,   _______,    _______,   RGB_TOG,     _______,    _______,    _______,    _______,    _______,
                              RGB_SPD,   RGB_SPI,    KC_DEL,                 KC_TRNS,    RGB_VAD,    RGB_VAI
     ),
 
     [3] = LAYOUT_split_6bars(
-         _______,  _______,  _______,   _______,    _______,                _______,    KC_HOME,    KC_MS_U,    KC_END,     KC_PGUP,
-         _______,  KC_LALT,  KC_LCTL,   KC_LSFT,    _______,                _______,    KC_MS_L,    KC_MS_D,    KC_MS_R,    KC_PGDN,
-          QK_RBT,  _______,  _______,   _______,    _______,   KC_TRNS,     _______,    _______,    _______,    _______,    _______,
-                             _______,   _______,    _______,                _______,    _______,    KC_TRNS
+         _______,  KC_ACL2,  KC_ACL1,   KC_ACL0,    _______,                _______,      KC_NO,    KC_MS_U,      KC_NO,      KC_NO,
+         _______,  _______,  KC_BTN2,   KC_BTN1,    _______,                _______,    KC_MS_L,    KC_MS_D,    KC_MS_R,      KC_NO,
+         _______,  _______,  _______,   _______,    _______,   RGB_TOG,     _______,    _______,    _______,    _______,    _______,
+                             _______,   _______,    _______,                _______,    KC_TRNS,    _______
     ),
 
     [4] = LAYOUT_split_6bars(
          _______,  _______,  _______,   _______,    _______,                _______,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,
          _______,  KC_LALT,  KC_LCTL,   KC_LSFT,    _______,                _______,    KC_LEFT,    KC_DOWN,    KC_RIGHT,   KC_PGDN,
-         _______,  _______,  _______,   _______,    _______,   KC_TRNS,     _______,    _______,    _______,    _______,    _______,
-                             _______,   _______,    _______,                _______,    _______,    _______
+          QK_RBT,  _______,  _______,   _______,    _______,   KC_TRNS,     _______,    _______,    _______,    _______,    _______,
+                             _______,   _______,    _______,                _______,    _______,    KC_TRNS
     )
 };
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
-    [1] =   { ENCODER_CCW_CW(DT_DOWN, DT_UP) },
-    [2] =   { ENCODER_CCW_CW(DT_DOWN, DT_UP) },
-    [3] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [0] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [1] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [2] =   { ENCODER_CCW_CW(RGB_HUD, RGB_HUI) },
+    [3] =   { ENCODER_CCW_CW(RGB_SPD, RGB_SPI) },
     [4] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) }
 };
 #endif
 
-#ifdef PERMISSIVE_HOLD_PER_KEY
+/*#ifdef PERMISSIVE_HOLD_PER_KEY
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case F_SFT:
@@ -77,15 +77,15 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
 }
-#endif
+#endif*/
 
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case F_SFT:
-            return 130;
+            return 120;
         case J_SFT:
-            return 130;
+            return 120;
         default:
             return TAPPING_TERM;
     }
