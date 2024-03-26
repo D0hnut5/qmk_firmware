@@ -6,8 +6,16 @@
     "usb": {
         "vid": "0xFEED",
         "pid": "0xC456",
-        "device_version": "0.0.1",
-        "force_nkro": true
+        "device_version": "0.0.1"
+    },
+    "features": {
+        "bootmagic": true,
+        "encoder": true,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true,
+        "rgblight": true,
+        "rgb_matrix": false
     },
     "rgblight": {
         "led_count": 19,
